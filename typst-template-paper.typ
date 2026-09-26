@@ -34,11 +34,21 @@
   show figure.caption: c => box(inset: (left: 1pt, right: 1pt), text(fill: colors.darkgray, size: 8pt, c))
   
   // specific raw styling colour
-  show raw: r => box(inset: (bottom: -2pt), 
-    box(fill: colors.lightblue, radius: 2pt, inset: (left: 2pt, right: 2pt, top: 2pt, bottom: 2pt), 
+  show raw: r => if r.block {block(inset: (bottom: -2pt),
+    block(
+      fill: colors.lightblue,
+      radius: 2pt,
+      inset: (left: 2pt, right: 2pt, top: 2pt, bottom: 2pt),
+      breakable: true,
+      text(fill: navy, r)
+    )
+  )} else {
+  box(inset: (bottom: -2pt),
+    box(fill: colors.lightblue, radius: 2pt, inset: (left: 2pt, right: 2pt, top: 2pt, bottom: 2pt),
       text(fill: navy, r)
     )
   )
+}
 
   // Headings
   set heading(numbering: "1.")
